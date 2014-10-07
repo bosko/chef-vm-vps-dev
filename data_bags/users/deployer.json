@@ -1,0 +1,9 @@
+{
+  "id": "deployer",
+  "ssh_keys": [
+    "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAwPpXAMzUfl1eNv3v27nIxTgP5n/XDCDJ3KavxOOS0O70uYcbxY3rSaxQYwz6LhPbZFhGiAqCDgkyOMhJoYlULMJ5UbrVBcTH6i7KU3M/OHV7YVwvb+NJg0G3pinaV2v2SKAv+OscCLbr11ITmgd9x5o8NsI4CWjTGIA/UpOjgcAo8IbQfJidezPR9W2eb3Fp//iO/465/yfrB+d37edGe+EvkvyQYIVymbDr1qvPDcjXzFLWzwCwcozN2a8V7gO+MzsZNgUGUmFYyzMfcmfrjMnHbFg+5cgCvzLEQa1Sv55BZ6Sks6hasnTTL8wHUgdIR8/8NJv121w4nXNrwxbGiQ== bosko@ubumobile"
+  ],
+  "groups": [ "deployer", "sudo" ],
+  "uid": 2001,
+  "shell": "\/bin\/bash"
+}
