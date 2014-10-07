@@ -15,3 +15,6 @@ users_manage "deployer" do
   group_id 2000
   action [ :remove, :create ]
 end
+
+include_recipe "sudo"
+include_recipe "openssh"

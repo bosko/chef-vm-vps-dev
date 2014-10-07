@@ -8,3 +8,4 @@ version          '0.1.0'
 depends "chef-solo-search"
 depends "users"
 depends "openssh"
+depends "sudo"
