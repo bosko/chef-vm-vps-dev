@@ -1,13 +1,10 @@
-default.packages = %w{ vim emacs git build-essential zlib1g-dev libssl-dev
- libreadline-dev libyaml-dev libcurl4-openssl-dev curl libffi-dev autoconf
- libreadline6 libxml2-dev libxslt1-dev openssl htop
- libpcre3 libpcre3-dev redis-server memcached }
+default.packages = %w{ vim emacs }
 
 default.authorization.sudo.users = ["deployer"]
 default.authorization.sudo.passwordless = true
 
 default.rbenv.group_users = ["deployer"]
-default.ruby_build.prefix = "/usr/local/ruby"
+default.ruby_build.prefix = "/usr/local"
 
 default.openssh.server.permit_root_login = 'no'
 default.openssh.server.password_authentication = 'no'
