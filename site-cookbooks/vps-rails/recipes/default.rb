@@ -20,18 +20,32 @@ users_manage "deployer" do
   action [ :remove, :create ]
 end
 
-file "/home/deployer/.gemrc" do
-  content "gem: --no-ri --no-rdoc"
-  owner 'deployer'
-  group 'deployer'
-  mode '0664'
-end
-
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
 rbenv_ruby "2.1.2" do
   global true
+end
+
+git "/home/deployer/boem" do
+  repository "https://github.com/bosko/boem.git"
+  revision "master"
+  action :sync
+  user "deployer"
+  group "deployer"
+end
+
+link "/home/deployer/.emacs.d" do
+  to "/home/deployer/boem"
+  owner "deployer"
+  group "deployer"
+end
+
+file "/home/deployer/.gemrc" do
+  content "gem: --no-ri --no-rdoc"
+  owner 'deployer'
+  group 'deployer'
+  mode '0664'
 end
 
 rbenv_gem "bundler" do
