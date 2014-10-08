@@ -6,6 +6,9 @@ default.packages = %w{ vim emacs git build-essential zlib1g-dev libssl-dev
 default.authorization.sudo.users = ["deployer"]
 default.authorization.sudo.passwordless = true
 
+default.rbenv.group_users = ["deployer"]
+default.ruby_build.prefix = "/usr/local/ruby"
+
 default.openssh.server.permit_root_login = 'no'
 default.openssh.server.password_authentication = 'no'
 default.openssh.server.allow_users = ["deployer"]
