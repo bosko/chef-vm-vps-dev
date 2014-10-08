@@ -7,6 +7,10 @@
 # All rights reserved - Do Not Redistribute
 #
 
+execute "apt-get update" do
+  command "apt-get -y update"
+end
+
 node.packages.each do |pkg|
   package pkg
 end
