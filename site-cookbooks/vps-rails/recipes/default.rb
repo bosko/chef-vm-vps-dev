@@ -15,7 +15,7 @@ node.packages.each do |pkg|
   package pkg
 end
 
-users_manage "deployer" do
+users_manage "#{node[:vps_rails][:deploy_user]}" do
   group_id 2000
   action [ :remove, :create ]
 end
@@ -23,11 +23,11 @@ end
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
-rbenv_ruby "2.1.2" do
+rbenv_ruby "#{node[:vps_rails][:ruby_version]}" do
   global true
 end
 
-git "/home/deployer/boem" do
+git "/home/#{node[:vps_rails][:deploy_user]}/boem" do
   repository "https://github.com/bosko/boem.git"
   revision "master"
   action :sync
@@ -35,21 +35,21 @@ git "/home/deployer/boem" do
   group "deployer"
 end
 
-link "/home/deployer/.emacs.d" do
-  to "/home/deployer/boem"
+link "/home/#{node[:vps_rails][:deploy_user]}/.emacs.d" do
+  to "/home/#{node[:vps_rails][:deploy_user]}/boem"
   owner "deployer"
   group "deployer"
 end
 
-file "/home/deployer/.gemrc" do
+file "/home/#{node[:vps_rails][:deploy_user]}/.gemrc" do
   content "gem: --no-ri --no-rdoc"
-  owner 'deployer'
-  group 'deployer'
+  owner "#{node[:vps_rails][:deploy_user]}"
+  group "#{node[:vps_rails][:deploy_user]}"
   mode '0664'
 end
 
 rbenv_gem "bundler" do
-  ruby_version "2.1.2"
+  ruby_version "#{node[:vps_rails][:ruby_version]}"
 end
 
 include_recipe "sudo"

@@ -1,5 +1,8 @@
 default.packages = %w{ vim emacs }
 
+default.vps_rails.deploy_user = "deployer"
+default.vps_rails.ruby_version = "2.1.2"
+
 default.authorization.sudo.users = ["deployer"]
 default.authorization.sudo.passwordless = true
 
