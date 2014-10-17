@@ -4,6 +4,7 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "mysql": {
+      "version": "5.6",
       "server_root_password": "bosko",
       "remove_anonymous_users": true
     }
