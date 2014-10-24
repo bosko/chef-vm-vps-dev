@@ -1,4 +1,4 @@
-default.packages = %w{ vim emacs }
+default.packages = %w{ vim emacs htop }
 
 default.vps_rails.deploy_user = "deployer"
 default.vps_rails.ruby_version = "2.1.2"
