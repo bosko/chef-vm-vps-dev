@@ -1,68 +1,47 @@
 vps-rails Cookbook
 ==================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+Provisioning VPS for Ruby on Rails development or production. Cookbook will forbid root login and password authentication so be careful to have proper SSH keys or you won't be able to log in to the VPS.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - vps-rails needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List your cookbook attributes here.
-
-e.g.
-#### vps-rails::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['vps-rails']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+Depends on following cookbooks:
+1. users
+2. openssh
+3. sudo
+4. rbenv
+5. mysql
 
 Usage
 -----
 #### vps-rails::default
-TODO: Write usage instructions for each cookbook.
+User that will be created is defined in `data_bags/users/deployer.json` file where public key is set as well as user name.
+
+Set up deploy user name in vps-rails/attributes/default.rb file, as well as required Ruby version and SSH port.
 
 e.g.
 Just include `vps-rails` in your node's `run_list`:
 
 ```json
 {
-  "name":"my_node",
   "run_list": [
-    "recipe[vps-rails]"
-  ]
+    "recipe[vps-rails]",
+    "role[dev_vps]"
+  ],
+  "automatic": {
+    "ipaddress": "127.0.0.1"
+  }
 }
 ```
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+Provisioning local Virtual Box machine:
+```
+be knife solo prepare vagrant@127.0.0.1 -p 2222 -i <path_to_vagrant_key_within_vm_folder>
+be knife solo cook vagrant@127.0.0.1 -p 2222 -i <path_to_vagrant_key_within_vm_folder>
+```
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write your change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+Provisioning remote VPS:
 
-License and Authors
--------------------
-Authors: TODO: List authors
+```
+be knife solo prepare <user@server.address>
+be knife solo cook <user@server.address>
+```
