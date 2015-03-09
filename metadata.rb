@@ -6,6 +6,7 @@ description      'Installs/Configures VPA'
 version          '0.1.0'
 
 depends "chef-solo-search"
+depends "git"
 depends "users"
 depends "openssh"
 depends "sudo"

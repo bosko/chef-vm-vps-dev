@@ -20,6 +20,7 @@ users_manage "#{node[:vps_rails][:deploy_user]}" do
   action [ :remove, :create ]
 end
 
+include_recipe "git"
 include_recipe "rbenv::default"
 include_recipe "rbenv::ruby_build"
 
