@@ -62,5 +62,17 @@ rbenv_gem "bundler" do
   ruby_version "#{node[:vps_rails][:ruby_version]}"
 end
 
+mysql_service 'default' do
+  port '3306'
+  version '5.6'
+  initial_root_password 'bosko'
+  action [:create, :start]
+end
+
+mysql_client 'default' do
+  version '5.6'
+  action :create
+end
+
 include_recipe "sudo"
 include_recipe "openssh"

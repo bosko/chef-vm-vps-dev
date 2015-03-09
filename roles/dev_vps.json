@@ -3,21 +3,10 @@
   "description": "Development VPS which includes DBs and more",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "mysql": {
-      "version": "5.6",
-      "server_root_password": "bosko",
-      "remove_anonymous_users": true
-    }
   },
   "override_attributes": {
-
   },
   "chef_type": "role",
-  "run_list": [
-    "recipe[mysql::server]",
-    "recipe[mysql::client]"
-  ],
   "env_run_lists": {
-
   }
 }
