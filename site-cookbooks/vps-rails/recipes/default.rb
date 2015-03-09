@@ -49,6 +49,15 @@ file "/home/#{node[:vps_rails][:deploy_user]}/.gemrc" do
   mode '0664'
 end
 
+file "/home/#{node[:vps_rails][:deploy_user]}/.tmux.conf" do
+  content "unbind C-b
+set-option -g prefix `
+bind-key ` send-prefix"
+  owner "#{node[:vps_rails][:deploy_user]}"
+  group "#{node[:vps_rails][:deploy_user]}"
+  mode '0664'
+end
+
 rbenv_gem "bundler" do
   ruby_version "#{node[:vps_rails][:ruby_version]}"
 end
